@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Treeniohjelma</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Muokkaa treeniä</h1>
+		<div>
+			<form th:object="${treeni}" th:action="@{../save}" action="#" method="post">
+				<input type="hidden" th:field="*{id}" class="form-control" />
+				
+				<label for="treeniMuoto">Treeni:</label>
+				<input type="text" id="treeniMuoto" th:field="*{treeniMuoto}" />
+				
+				<label for="treeniKesto">Treenin Kesto:</label>
+				<input type="text" id="treeniKesto" th:field="*{treeniKesto}" />
+				
+				<label for="paikka">Paikka:</label>
+				<input type="text" id="paikka" th:field="*{paikka}" />
+				
+				<label for="paivamaara">Päivamäärä:</label>
+				<input type="text" id="paivamaara" th:field="*{paivamaara}" />
+			
+				<label for="kellonaika">Kellonaika:</label>
+				<input type="text" id="kellonaika" th:field="*{kellonaika}" />
+				
+				<label for="paivalista">Viikonpäivä:</label>
+				<select id="paivalista" th:field="*{viikonpaiva.viikonpaivaid}" class="form-control">
+					<option
+						th:each="paiva: ${viikonpaivat}"
+						th:value="${paiva.viikonpaivaid}"
+						th:text="${paiva.viikonpaiva}"
+					></option>
+				</select>
+				<input type="submit" value="Save"></input>
+			</form>
+		</div>
+	</body>
+</html>
