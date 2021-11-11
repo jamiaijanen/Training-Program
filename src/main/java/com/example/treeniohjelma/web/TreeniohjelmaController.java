@@ -1,6 +1,7 @@
 package com.example.treeniohjelma.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,11 @@ public class TreeniohjelmaController {
 
 	@Autowired
 	private ViikonpaivaRepository vrepository;
+
+	@RequestMapping(value = "/kirjautuminen")
+	public String kirjautuminen() {
+		return "kirjautuminen";
+	}
 
 	@RequestMapping(value = { "/", "/treenit" })
 	public String treenit(Model model) {
@@ -38,6 +44,7 @@ public class TreeniohjelmaController {
 		return "redirect:treenit";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}")
 	public String poistaTreeni(@PathVariable("id") Long treeniId, Model model) {
 		repository.deleteById(treeniId);
