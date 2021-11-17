@@ -1,4 +1,4 @@
-package com.example.treeniohjelma.domain;
+package com.example.trainingprogram.domain;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

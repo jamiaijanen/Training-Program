@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<title>Training Application</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Trainings</h1>
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Training</th>
+				<th>Length</th>
+				<th>Place</th>
+				<th>Day Of Week</th>
+				<th>Time</th>
+				<th>Date</th>
+				<th sec:authorize="hasAuthority('ADMIN')"></th>
+				
+			</tr>
+			<tr th:each = "training : ${trainings}">
+				<td th:text="${training.trainingName}"></td>
+				<td th:text="${training.length}"></td>
+				<td th:text="${training.place}"></td>
+				<td th:text="${training.dayOfWeek.dayOfWeek}"></td>
+				<td th:text="${training.time}"></td>
+				<td th:text="${training.date}"></td>
+				<td><a th:href="@{/edit/{id}(id=${training.id})}">Edit training</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${training.id})}">Delete training</a></td>
+			</tr>	
+		</table>
+		<a href="/add" class="btn btn-primary">Add training</a>
+		<br />
+		<br />
+	   	<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout"/>
+		</form>
+	</body>
+</html>

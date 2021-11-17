@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Uusi käyttäjä</title>
+    <title>New User</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div class="container">
 	<h1>Sign-up</h1>
      <div class="col-md-4">
-		<form th:object="${rekisteroikayttaja}" th:action="@{/tallennakayttaja}" action="#" method="post">
+		<form th:object="${registerUser}" th:action="@{/saveuser}" action="#" method="post">
 			<div>
 				<label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
 				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	

@@ -1,4 +1,4 @@
-package com.example.treeniohjelma.domain;
+package com.example.trainingprogram.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

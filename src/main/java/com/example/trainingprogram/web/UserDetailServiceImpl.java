@@ -1,4 +1,4 @@
-package com.example.treeniohjelma.web;
+package com.example.trainingprogram.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.treeniohjelma.domain.User;
-import com.example.treeniohjelma.domain.UserRepository;
+import com.example.trainingprogram.domain.User;
+import com.example.trainingprogram.domain.UserRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
@@ -16,16 +16,16 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	private final UserRepository krepository;
 
 	@Autowired
-	public UserDetailServiceImpl(UserRepository kayttajaRepository) {
-		this.krepository = kayttajaRepository;
+	public UserDetailServiceImpl(UserRepository userRepository) {
+		this.krepository = userRepository;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User kayttajaTunnus = krepository.findByUsername(username);
-		UserDetails kayttajaNimi = new org.springframework.security.core.userdetails.User(username,
-				kayttajaTunnus.getPasswordHash(), AuthorityUtils.createAuthorityList(kayttajaTunnus.getRole()));
+		User user = krepository.findByUsername(username);
+		UserDetails userdata = new org.springframework.security.core.userdetails.User(username,
+				user.getPasswordHash(), AuthorityUtils.createAuthorityList(user.getRole()));
 
-		return kayttajaNimi;
+		return userdata;
 	}
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Training Application</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Add training</h1>
+		<div>
+			<form th:object="${training}" th:action="@{save}" action="#" method="post">
+				<label for="trainingName">Training:</label>
+				<input type="text" id="trainingName" th:field="*{trainingName}" />
+				
+				<label for="length">Length:</label>
+				<input type="text" id="length" th:field="*{length}" />
+				
+				<label for="place">Place:</label>
+				<input type="text" id="place" th:field="*{place}" />
+				
+				<label for="date">Date:</label>
+				<input type="text" id="date" th:field="*{date}" />
+			
+				<label for="time">Time:</label>
+				<input type="text" id="time" th:field="*{time}" />
+				
+				<label for="dayOfWeek">Day of Week:</label>
+				<select id="dayOfWeek" th:field="*{dayOfWeek}" class="form-control">
+					<option
+						th:each="dayOfWeek: ${dayOfWeek}"
+						th:value="${dayOfWeek.dayOfWeekId}"
+						th:text="${dayOfWeek.dayOfWeek}"
+					></option>
+				</select>
+				<input type="submit" value="Save"></input>
+			</form>
+		</div>
+	</body>
+</html>

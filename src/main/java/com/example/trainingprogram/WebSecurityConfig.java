@@ -1,4 +1,4 @@
-package com.example.treeniohjelma;
+package com.example.trainingprogram;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.example.treeniohjelma.web.UserDetailServiceImpl;
+import com.example.trainingprogram.web.UserDetailServiceImpl;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -22,9 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/resources/**").permitAll().and().authorizeRequests()
-				.antMatchers("/rekisteroituminen", "/tallennakayttaja").permitAll().and().authorizeRequests()
-				.anyRequest().authenticated().and().formLogin().loginPage("/kirjautuminen")
-				.defaultSuccessUrl("/treenit").permitAll().and().logout().permitAll();
+				.antMatchers("/registeration", "/saveuser").permitAll().and().authorizeRequests()
+				.anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.defaultSuccessUrl("/trainings").permitAll().and().logout().permitAll();
 	}
 
 	@Autowired
