@@ -29,17 +29,23 @@ public class Training {
 	@JoinColumn(name = "dayOfWeekId")
 	private DayOfWeek dayOfWeek;
 
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "usernameId")
+	private User user;
+
 	public Training() {
 
 	}
 
-	public Training(String trainingName, String length, String place, LocalDate date, LocalTime time) {
+	public Training(String trainingName, String length, String place, LocalDate date, LocalTime time, User user) {
 		super();
 		this.trainingName = trainingName;
 		this.length = length;
 		this.place = place;
 		this.date = date;
 		this.time = time;
+		this.user = user;
 	}
 
 	public long getId() {
@@ -98,15 +104,22 @@ public class Training {
 		this.dayOfWeek = dayOfWeek;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		if (this.dayOfWeek != null) {
-			return "Treeni [id=" + id + ", trainingName=" + trainingName + ", length=" + length + ", place="
-					+ place + ", date=" + date + ", time=" + time + ", dayOfWeek="
-					+ this.getDayOfWeek() + "]";
+			return "Treeni [id=" + id + ", trainingName=" + trainingName + ", length=" + length + ", place=" + place
+					+ ", date=" + date + ", time=" + time + ", dayOfWeek=" + this.getDayOfWeek() + "]";
 		} else {
-			return "Training [id=" + id + ", trainingName=" + trainingName + ", length=" + length + ", place="
-					+ place + ", date=" + date + ", time=" + time + "]";
+			return "Training [id=" + id + ", trainingName=" + trainingName + ", length=" + length + ", place=" + place
+					+ ", date=" + date + ", time=" + time + "]";
 		}
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.trainingprogram.domain.DayOfWeekRepository;
 import com.example.trainingprogram.domain.Training;
@@ -38,8 +39,8 @@ public class TrainingController {
 		return "addTraining";
 	}
 
-	@RequestMapping(value = "/save")
-	public String saveTraining(Training training) {
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String save(Training training) {
 		repository.save(training);
 		return "redirect:trainings";
 	}
@@ -57,4 +58,10 @@ public class TrainingController {
 		model.addAttribute("dayOfWeek", vrepository.findAll());
 		return "editTraining";
 	}
+
+//	@RequestMapping(value = "/username")
+//	@ResponseBody
+//	public String currentUsername(Principal principal) {
+//		return principal.getName();
+//	}
 }

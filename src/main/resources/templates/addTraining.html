@@ -4,6 +4,7 @@ xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Training Application</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link th:href ="@{/css/bootstrap.min.css}" rel="stylesheet">
 	</head>
 	<body>
 		<h1>Add training</h1>
@@ -12,20 +13,30 @@ xmlns:th="http://www.thymeleaf.org">
 				<label for="trainingName">Training:</label>
 				<input type="text" id="trainingName" th:field="*{trainingName}" />
 				
-				<label for="length">Length:</label>
+				<br />
+				
+				<label for="length">Length (min):</label>
 				<input type="text" id="length" th:field="*{length}" />
+				
+				<br />
 				
 				<label for="place">Place:</label>
 				<input type="text" id="place" th:field="*{place}" />
 				
+				<br />
+				
 				<label for="date">Date:</label>
 				<input type="text" id="date" th:field="*{date}" />
+				
+				<br />
 			
 				<label for="time">Time:</label>
 				<input type="text" id="time" th:field="*{time}" />
 				
+				<br />
+				
 				<label for="dayOfWeek">Day of Week:</label>
-				<select id="dayOfWeek" th:field="*{dayOfWeek}" class="form-control">
+				<select id="dayOfWeek" th:field="*{dayOfWeek}" class="form-control input-sm">
 					<option
 						th:each="dayOfWeek: ${dayOfWeek}"
 						th:value="${dayOfWeek.dayOfWeekId}"

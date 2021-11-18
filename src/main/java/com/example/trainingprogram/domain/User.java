@@ -1,18 +1,28 @@
 package com.example.trainingprogram.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
 
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "dayOfWeek")
+	private List<Training> trainings;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, updatable = false)
-	private Long id;
+	@Column(name = "usernameId", nullable = false, updatable = false)
+	private Long usernameId;
 
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
@@ -34,11 +44,11 @@ public class User {
 	}
 
 	public Long getId() {
-		return id;
+		return usernameId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long usernameId) {
+		this.usernameId = usernameId;
 	}
 
 	public String getUsername() {

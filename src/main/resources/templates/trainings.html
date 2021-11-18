@@ -3,6 +3,7 @@
 	<head>
 		<title>Training Application</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link th:href ="@{/css/bootstrap.min.css}" rel="stylesheet">
 	</head>
 	<body>
 		<h1>Trainings</h1>
@@ -10,11 +11,12 @@
 		<table class="table table-striped">
 			<tr>
 				<th>Training</th>
-				<th>Length</th>
+				<th>Length (min)</th>
 				<th>Place</th>
 				<th>Day Of Week</th>
 				<th>Time</th>
 				<th>Date</th>
+				<th></th>
 				<th sec:authorize="hasAuthority('ADMIN')"></th>
 				
 			</tr>
@@ -29,11 +31,11 @@
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${training.id})}">Delete training</a></td>
 			</tr>	
 		</table>
-		<a href="/add" class="btn btn-primary">Add training</a>
+		<a href="/add" class="btn btn-success">Add training</a>
 		<br />
 		<br />
 	   	<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Logout"/>
+			<input type="submit" value="Logout" class="btn btn-primary"/>
 		</form>
 	</body>
 </html>

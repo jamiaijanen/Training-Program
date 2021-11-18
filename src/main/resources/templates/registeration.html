@@ -3,12 +3,13 @@
 <head>
     <title>New User</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href ="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<h1>Sign-up</h1>
      <div class="col-md-4">
-		<form th:object="${registerUser}" th:action="@{/saveuser}" action="#" method="post">
+		<form th:object="${newuser}" th:action="@{/saveuser}" action="#" method="post">
 			<div>
 				<label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
 				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
@@ -22,7 +23,7 @@
 				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
 			</div>
 			
-			<input type="submit" class="btn btn-primary" value="Sign up"></input>		
+			<input type="submit" class="btn btn-primary" value="Signup"></input>		
 		</form>
 	</div>
 </div>
