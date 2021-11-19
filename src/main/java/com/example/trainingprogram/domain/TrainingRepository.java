@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TrainingRepository extends CrudRepository<Training, Long> {
 
-	Training findByUser(String user);
+	Training findByUser(User user);
 
 }

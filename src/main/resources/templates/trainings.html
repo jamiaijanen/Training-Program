@@ -26,7 +26,7 @@
 				<td th:text="${training.place}"></td>
 				<td th:text="${training.dayOfWeek.dayOfWeek}"></td>
 				<td th:text="${training.time}"></td>
-				<td th:text="${training.date}"></td>
+				<td th:text="${#temporals.format(training.date, 'dd.MM.yyyy')}"></td>
 				<td><a th:href="@{/edit/{id}(id=${training.id})}">Edit training</a></td>
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${training.id})}">Delete training</a></td>
 			</tr>	

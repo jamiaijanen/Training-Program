@@ -3,6 +3,7 @@ package com.example.trainingprogram.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.example.trainingprogram.domain.DayOfWeekRepository;
 import com.example.trainingprogram.domain.Training;
 import com.example.trainingprogram.domain.TrainingRepository;
 
+@Service
 @Controller
 public class TrainingController {
 
@@ -26,6 +28,7 @@ public class TrainingController {
 		return "login";
 	}
 
+	// repository.findByUser(urepository.findByUsername(principal.getName()))
 	@RequestMapping(value = { "/", "/trainings" })
 	public String trainings(Model model) {
 		model.addAttribute("trainings", repository.findAll());
