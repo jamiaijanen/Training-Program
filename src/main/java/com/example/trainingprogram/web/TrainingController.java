@@ -23,12 +23,14 @@ public class TrainingController {
 	@Autowired
 	private DayOfWeekRepository vrepository;
 
+//	@Autowired
+//	private UserRepository urepository;
+
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";
 	}
 
-	// repository.findByUser(urepository.findByUsername(principal.getName()))
 	@RequestMapping(value = { "/", "/trainings" })
 	public String trainings(Model model) {
 		model.addAttribute("trainings", repository.findAll());
@@ -66,5 +68,11 @@ public class TrainingController {
 //	@ResponseBody
 //	public String currentUsername(Principal principal) {
 //		return principal.getName();
+//	}
+
+//	@RequestMapping(value = "/trainings")
+//	public String user(Model model, Principal principal) {
+//		model.addAttribute("trainings", repository.findByUser(urepository.findByUsername(principal.getName())));
+//		return "train";
 //	}
 }
