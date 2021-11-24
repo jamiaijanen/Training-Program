@@ -21,12 +21,14 @@ public class UserController {
 	@Autowired
 	private UserRepository krepository;
 
+	// register new user
 	@RequestMapping(value = "registeration")
 	public String addUser(Model model) {
 		model.addAttribute("newuser", new NewUser());
 		return "registeration";
 	}
 
+	// checking if new user already exist
 	@RequestMapping(value = "saveuser", method = RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("newuser") NewUser newUser, BindingResult bindingResult) {
 		if (!bindingResult.hasErrors()) {

@@ -23,10 +23,12 @@ public class TrainingProgramApplication {
 			UserRepository urepository) {
 		return (args) -> {
 
+			// check if there is already saved DayOfWeek objects
 			if (vrepository.count() == 7) {
 
 			} else {
 
+				// saving 7 DayOfWeek objects and 2 users (user and admin)
 				vrepository.save(new DayOfWeek("Monday"));
 				vrepository.save(new DayOfWeek("Tuesday"));
 				vrepository.save(new DayOfWeek("Wednesday"));
