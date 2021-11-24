@@ -38,14 +38,13 @@ public class Training {
 
 	}
 
-	public Training(String trainingName, String length, String place, LocalDate date, LocalTime time, User user) {
+	public Training(String trainingName, String length, String place, LocalDate date, LocalTime time) {
 		super();
 		this.trainingName = trainingName;
 		this.length = length;
 		this.place = place;
 		this.date = date;
 		this.time = time;
-		this.user = user;
 	}
 
 	public long getId() {
